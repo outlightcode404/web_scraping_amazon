@@ -1,0 +1,8 @@
+import requests
+from bs4 import BeautifulSoup
+import re
+url = "https://www.amazon.com.br/Bicicleta-Ergom%C3%A9trica-Gallant-Spinning-Gsb08hbta-pt/dp/B0C4B767KB/ref=sr_1_1_sspa?crid=76KJ6UJTM9ZO&dib=eyJ2IjoiMSJ9.lHbbvoJqKYZ2QJkrlLgolfo_us0BYi0c3UH4N5DvUl44ggBnWr7eL_b7sOAXXBPyUhEwtdBkGpmDlbyD-VZ846khDH44xZMdeonkgVMjcngebTWqOzA-B__JExI04YgrzDahlj51bu_MwhCMoy7jG3aGiJMcMFB_djBoSmcOQhq61y70VsYNDHQpRDsZl6wr_wBQlhzpsUifovs1-bteWfChCBTlSEOIrdrBZnpMWQVZUKs7joGTNjiwcqD67diGHRqZu-84WtWzg054n1IkFNxm7pPOxKKDckIlVMM0qW8.UjEZDasbV2kEL_0xqeV9F30xHkiLWH7e3PPRjyJ9SHg&dib_tag=se&keywords=bicicleta&qid=1737563518&sprefix=%2Caps%2C166&sr=8-1-spons&ufe=app_do%3Aamzn1.fos.25548f35-0de7-44b3-b28e-0f56f3f96147&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"
+requisicao =  requests.get(url)
+site = BeautifulSoup(requisicao.text, "html.parser")
+preco = site.find_all('span', class_ = "a-price-whole")
+print(preco)
