@@ -1,0 +1,9 @@
+import requests
+from bs4 import BeautifulSoup
+import re
+url = "https://www.amazon.com.br/s?k=bicicleta&crid=QUJO0TC4G1CR&sprefix=%2Caps%2C503&ref=nb_sb_ss_recent_1_0_recent"
+todos_precos = set()
+requisicao =  requests.get(url)
+site = BeautifulSoup(requisicao.text, "html.parser")
+preco = site.find_all('span', class_ = "a-price-whole")
+print(preco)
