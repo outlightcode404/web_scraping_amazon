@@ -1,0 +1,9 @@
+import requests
+from bs4 import BeautifulSoup
+import re
+url = "https://www.amazon.com.br/Escrit%C3%B3rio-Ergon%C3%B4mica-Respir%C3%A1vel-Presidente-Confort%C3%A1vel/dp/B0DP7YVDYZ/ref=sr_1_1_sspa?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1RPAP5XZP36UQ&dib=eyJ2IjoiMSJ9.wdo-0lWZfItCP5J7fubgqWZVuuSEOQn_fQXABaGVdQNBk2opC778Z3rMHAPQuyC0_oCspGkCgmmBn87OxsBpfy1zB9hfzSlZxdNu8yclglsjoiWgW0vwl9Q9Be4NHbuJA3AuRVsHgJl6wxlMSW-jPZcGZv8ZY2PnYepO2XqoUp9nOrewTtmf6P4hE4RJlC7EEJMK3YXAIuKBm_d5bOBHVz_35hdjrZ9JQirkpncKXT6qV6-18bz3z1ma5ajnYGvo1cmj19Oh65I7lcpkHvQPyHvVeqIJYCKP_kmwcKOALgU.5Vr0KM3j-7jO7M94H9vyg2mvTx7qpEhU3E0URYe5D24&dib_tag=se&keywords=cadeira+gamer&qid=1737861362&sprefix=cadeira+gamer%2Caps%2C227&sr=8-1-spons&ufe=app_do%3Aamzn1.fos.a492fd4a-f54d-4e8d-8c31-35e0a04ce61e&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&smid=A2GN42Q1KRZIR1"
+headers = ['User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36']
+requisicao =  requests.get(url,headers=headers)
+site = BeautifulSoup(requisicao.text, "html.parser")
+preco = site.find_all('span', class_ = "a-price-whole")
+print(site.prettify())
